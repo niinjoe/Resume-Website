@@ -1,0 +1,10 @@
+.h1 {
+  text-align: center;
+  text-decoration: dashed;
+  color: brown;
+}
+
+.list_items {
+  color: blueviolet;
+  text-decoration: overline;
+}
