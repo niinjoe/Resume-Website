@@ -898,6 +898,7 @@ a {
 }
 .w3-round-xlarge {
   border-radius: 16px;
+  text-align: center;
 }
 .w3-round-xxlarge {
   border-radius: 32px;
