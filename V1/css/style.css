@@ -275,7 +275,7 @@ img {
 a {
   color: inherit;
 }
-.download-button-div {
+.download-button-div, .certs {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -289,6 +289,21 @@ a {
   padding: 16px;
   cursor: pointer;
 }
+
+.certs-button {
+  color: #ffffff;
+  background-color: #002253;
+  border-radius: 8px;
+  font-size: 22px;
+  padding: 16px;
+  cursor: pointer;
+}
+
+.download-button, .certs-button {
+  width: 280px;
+}
+
+
 button:hover {
   cursor: pointer;
   background-color: #0092b2;
