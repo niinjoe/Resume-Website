@@ -311,6 +311,12 @@ button:hover {
 button:active {
   box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
 }
+
+.certs-site{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .w3-table,
 .w3-table-all {
   border-collapse: collapse;
