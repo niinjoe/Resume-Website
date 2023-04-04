@@ -183,10 +183,6 @@ textarea {
 [type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
-/* [type="search"] {
-  -webkit-appearance: textfield;
-  outline-offset: -2px;
-} */
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
@@ -261,6 +257,27 @@ img {
 }
 a {
   color: inherit;
+}
+.download-button-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.download-button {
+  color: #ffffff;
+  background-color: #04668c;
+  border-radius: 8px;
+  font-size: 22px;
+  padding: 16px;
+  cursor: pointer;
+}
+button:hover {
+  cursor: pointer;
+  background-color: #0092b2;
+}
+button:active {
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
 }
 .w3-table,
 .w3-table-all {
