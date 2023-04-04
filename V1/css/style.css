@@ -9,6 +9,23 @@
   text-decoration: overline;
 }
 
+/* .dark-mode {
+  background-color: #3a3a3a;
+  text-color: #ffffff;
+} */
+
+/* body { */
+/* Light mode styles */
+/* background-color: #ffffff;
+  color: #000000;
+} */
+
+/* body.dark-mode { */
+/* Dark mode styles */
+/* background-color: #202020;
+  color: #ffffff;
+} */
+
 * {
   margin: 0;
   padding: 0;
