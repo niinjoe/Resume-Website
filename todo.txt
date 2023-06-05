@@ -1,0 +1,7 @@
+To Do:
+
+1. Add download button for a pdf copy of the resume.
+2. Add an option to slide portrait pictures and add arrow buttons on top.
+3. Add a button to enable/disable dark-mode.
+4. Change the color layout to a more modern look, and add some border-radius.
+5. Add section to view certificates.
