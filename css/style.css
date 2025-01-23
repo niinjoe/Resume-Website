@@ -73,7 +73,7 @@ body {
 }
 
 .skill {
-    background: #4caf50;
+    background: #007bff;
     color: #fff;
     border-radius: 4px;
     padding: 10px;
@@ -86,7 +86,7 @@ body {
     display: inline-block;
     padding: 10px 20px;
     margin-right: 10px;
-    background: #4caf50;
+    background: #007bff;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -95,13 +95,13 @@ body {
 }
 
 .buttons .btn:hover {
-    background: #45a049;
+    background: #0056b3;
 }
 
 footer {
     text-align: center;
     padding: 20px;
-    background: #4caf50;
+    background: #007bff;
     color: #fff;
 }
 
@@ -116,7 +116,7 @@ footer {
     position: fixed;
     top: 10px;
     right: 10px;
-    background: #4caf50;
+    background: #007bff;
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -131,7 +131,7 @@ footer {
 }
 
 .dark-mode-toggle:hover {
-    background: #45a049;
+    background: #0056b3;
 }
 
 .certificates {
