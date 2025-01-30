@@ -1,39 +1,57 @@
+/* Root Variables */
+:root {
+    --primary-color: #007bff;
+    --primary-hover: #0056b3;
+    --background-light: #f4f4f4;
+    --background-dark: #333;
+    --text-light: #f4f4f4;
+    --text-dark: #333;
+    --card-background: #fff;
+    --card-shadow: rgba(0, 0, 0, 0.1);
+    --dark-card-background: #444;
+    --dark-border: #666;
+}
 
+/* Global Styles */
 html, body, h1, h2, h3, h4, h5, h6 {
     font-family: "Roboto", sans-serif;
 }
 
 body {
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--background-light);
+    color: var(--text-dark);
     margin: 0;
     padding: 0;
     transition: background-color 0.3s, color 0.3s;
 }
 
+/* Dark Mode */
 .dark-mode {
-    background-color: #333;
-    color: #f4f4f4;
+    background-color: var(--background-dark);
+    color: var(--text-light);
 }
 
-.dark-mode .card, .dark-mode .footer {
-    background-color: #444;
+.dark-mode .card, 
+.dark-mode .footer {
+    background-color: var(--dark-card-background);
 }
 
 .dark-mode .card {
-    border: 1px solid #666;
+    border: 1px solid var(--dark-border);
 }
 
 .dark-mode .footer a {
-    color: #f4f4f4;
+    color: var(--text-light);
 }
 
+/* Layout */
 .container {
     max-width: 1200px;
     margin: auto;
     padding: 20px;
 }
 
+/* Profile Section */
 .profile {
     display: flex;
     align-items: center;
@@ -54,10 +72,11 @@ body {
     flex-grow: 1;
 }
 
+/* Cards */
 .card {
-    background: #fff;
+    background: var(--card-background);
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px var(--card-shadow);
     padding: 20px;
     margin-bottom: 20px;
 }
@@ -66,27 +85,48 @@ body {
     margin-bottom: 20px;
 }
 
+/* Skills */
 .skills {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
 }
 
-.skill {
-    background: #007bff;
-    color: #fff;
-    border-radius: 4px;
-    padding: 10px;
-    margin: 5px;
-    flex: 1 1 120px;
-    text-align: center;
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 10px 0;
 }
 
+.skill {
+    background: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.skill i {
+    font-size: 16px;
+}
+
+.skill:hover {
+    background: var(--primary-hover);
+}
+
+/* Buttons */
 .buttons .btn {
     display: inline-block;
     padding: 10px 20px;
     margin-right: 10px;
-    background: #007bff;
+    background: var(--primary-color);
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -95,13 +135,14 @@ body {
 }
 
 .buttons .btn:hover {
-    background: #0056b3;
+    background: var(--primary-hover);
 }
 
+/* Footer */
 footer {
     text-align: center;
     padding: 20px;
-    background: #007bff;
+    background: var(--primary-color);
     color: #fff;
 }
 
@@ -112,11 +153,12 @@ footer {
     text-decoration: none;
 }
 
+/* Dark Mode Toggle Button */
 .dark-mode-toggle {
     position: fixed;
     top: 10px;
     right: 10px;
-    background: #007bff;
+    background: var(--primary-color);
     color: #fff;
     border: none;
     border-radius: 50%;
@@ -131,9 +173,10 @@ footer {
 }
 
 .dark-mode-toggle:hover {
-    background: #0056b3;
+    background: var(--primary-hover);
 }
 
+/* Certificates */
 .certificates {
     display: flex;
     flex-wrap: wrap;
@@ -141,9 +184,9 @@ footer {
 }
 
 .certificate {
-    background: #fff;
+    background: var(--card-background);
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px var(--card-shadow);
     padding: 20px;
     text-align: center;
     flex: 1 1 calc(33.333% - 20px);
@@ -162,14 +205,15 @@ footer {
     margin: 10px 0;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
     .certificate {
-    flex: 1 1 calc(50% - 20px);
+        flex: 1 1 calc(50% - 20px);
     }
 }
 
 @media (max-width: 480px) {
     .certificate {
-    flex: 1 1 100%;
+        flex: 1 1 100%;
     }
 }
