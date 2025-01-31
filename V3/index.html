@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joseph E. Serrano Ramos | Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        header {
+            background: #333;
+            color: white;
+            padding: 20px;
+        }
+        section {
+            padding: 40px;
+        }
+        .cta {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .cta:hover {
+            background: #0056b3;
+        }
+        footer {
+            background: #333;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Home Section -->
+    <header id="home">
+        <h1>Joseph E. Serrano Ramos</h1>
+        <p>System Administrator | Developer | Security Enthusiast</p>
+        <a href="#contact" class="cta">Get in Touch</a>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Detailing my background, education, and skills.</p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project-grid">
+            <!-- Project items will be added here -->
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2>Experience</h2>
+        <p>Job history and professional background.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:joe.serrano.r@gmail.com">joe.serrano.r@gmail.com</a></p>
+        <p>GitHub: <a href="https://github.com/niinjoe">github.com/niinjoe</a></p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Joseph E. Serrano Ramos | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const cta = document.querySelector(".cta");
+            cta.addEventListener("mouseover", () => {
+                cta.style.transform = "scale(1.1)";
+            });
+            cta.addEventListener("mouseout", () => {
+                cta.style.transform = "scale(1)";
+            });
+        });
+    </script>
+</body>
+</html>
