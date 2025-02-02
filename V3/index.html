@@ -1,99 +1,733 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joseph E. Serrano Ramos | Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="script.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            text-align: center;
-        }
-        header {
-            background: #333;
-            color: white;
-            padding: 20px;
-        }
-        section {
-            padding: 40px;
-        }
-        .cta {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #007BFF;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-        .cta:hover {
-            background: #0056b3;
-        }
-        footer {
-            background: #333;
-            color: white;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joseph E. Serrano Ramos | Portfolio</title>
+  <!-- Import Google Font for headings -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet" />
+  <!-- Load Font Awesome for icons (integrity removed for simplicity) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Load your Font Awesome kit if needed -->
+  <script src="https://kit.fontawesome.com/e5bd54ea5b.js" crossorigin="anonymous"></script>
+  <!-- Load EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <style>
+    /* Enable Smooth Scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+      text-align: center;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .dark-mode {
+      background-color: #121212;
+      color: #ffffff;
+    }
+    a {
+      color: inherit;
+    }
+    
+    /* Headings (Using Montserrat for a bolder look) */
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+    h3 {
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+    }
+    
+    /* Header */
+    header {
+      background: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+    .dark-mode header {
+      background: #1a1a1a;
+    }
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+    
+    /* Dark Mode Toggle Button with Icon & Tooltip */
+    .dark-mode-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      padding: 10px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .dark-mode .dark-mode-toggle {
+      background: #0056b3;
+    }
+    
+    /* Buttons */
+    .cta, .download-resume {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      transition: transform 0.2s, background 0.3s;
+    }
+    .cta:hover, .download-resume:hover {
+      background: #0056b3;
+      transform: scale(1.1);
+    }
+    .dark-mode .cta, .dark-mode .download-resume {
+      background: #0056b3;
+    }
+    
+    /* Typing Effect */
+    .typing-effect::after {
+      content: '|';
+      display: inline-block;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+    
+    /* Section Base Styles */
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    section h2 {
+      color: #007bff;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    /* About Section */
+    #about p {
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    
+    /* Projects Section (Professional Projects) */
+    .project-category {
+      background: linear-gradient(135deg, #ffffff, #e8f0fe);
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 40px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      border-left: 5px solid #007bff;
+    }
+    .project-category:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    .project-category h3 {
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+      color: #007bff;
+    }
+    .project-category ul {
+      list-style: disc;
+      padding-left: 20px;
+    }
+    .project-category ul li {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .dark-mode .project-category {
+      background: linear-gradient(135deg, #333333, #444444);
+      color: #fff;
+      border-left: 5px solid #0056b3;
+    }
+    .dark-mode .project-category h3 {
+      border-bottom: 2px solid #0056b3;
+    }
+    
+    /* Experience Section */
+    .job {
+      background: linear-gradient(135deg, #ffffff, #e8f0fe);
+      padding: 20px;
+      margin-bottom: 40px;
+      border-radius: 8px;
+      border-left: 5px solid #007bff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .job:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    .job h3 {
+      margin: 0;
+      color: #007bff;
+      font-size: 1.2rem;
+    }
+    .job .date {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 10px;
+    }
+    .job ul {
+      list-style: disc;
+      padding-left: 20px;
+    }
+    .job ul li {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .dark-mode .job {
+      background: #333;
+      color: #fff;
+      border-left: 5px solid #0056b3;
+    }
+    .dark-mode .job .date {
+      color: #ccc;
+    }
+    
+    /* Personal Projects Section */
+    #personal-projects {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    #personal-projects h2 {
+      color: #007bff;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .project-category.personal {
+      background: linear-gradient(135deg, #ffffff, #e8f0fe);
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 40px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-left: 5px solid #007bff;
+    }
+    .project-category.personal:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    .project-category.personal h3 {
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+      color: #007bff;
+    }
+    .project-category.personal ul {
+      list-style: disc;
+      padding-left: 20px;
+    }
+    .project-category.personal ul li {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .dark-mode .project-category.personal {
+      background: linear-gradient(135deg, #333333, #444444);
+      color: #fff;
+      border-left: 5px solid #0056b3;
+    }
+    .dark-mode .project-category.personal h3 {
+      border-bottom: 2px solid #0056b3;
+    }
+    
+    /* Education & Skills Section */
+    #education-skills h3 {
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+    #education-skills ul {
+      list-style: disc;
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    #education-skills ul li {
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    
+    /* Contact Section */
+    #contact {
+      background: #fff;
+      padding: 50px 30px;
+      margin: 60px auto;
+      max-width: 600px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    #contact h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    #contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    #contact label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    #contact input,
+    #contact textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    #contact input:focus,
+    #contact textarea:focus {
+      border-color: #007bff;
+      outline: none;
+      box-shadow: 0 0 5px rgba(0,123,255,0.5);
+    }
+    #contact button {
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      align-self: flex-start;
+    }
+    #contact button:hover {
+      background: #0056b3;
+    }
+    .social-links {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .social-links a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    .social-links a:hover {
+      color: #0056b3;
+    }
+    .dark-mode .social-links a {
+      color: #66b2ff;
+    }
+    .dark-mode .social-links a:hover {
+      color: #99ccff;
+    }
+    .dark-mode #contact {
+      background: #333;
+      box-shadow: none;
+    }
+    .dark-mode #contact input,
+    .dark-mode #contact textarea {
+      background: #555;
+      color: #fff;
+      border: 1px solid #777;
+    }
+    .dark-mode #contact input:focus,
+    .dark-mode #contact textarea:focus {
+      border-color: #0056b3;
+      box-shadow: 0 0 5px rgba(0,86,179,0.5);
+    }
+    .dark-mode #contact button {
+      background: #0056b3;
+    }
+    .dark-mode #contact button:hover {
+      background: #003f7f;
+    }
+    
+    /* Footer */
+    footer {
+      background: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    .dark-mode footer {
+      background: #1a1a1a;
+    }
+    
+    /* Replace default list bullets with a techy computer icon */
+    #projects ul, #experience ul, #education-skills ul, #personal-projects ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    #projects ul li::before,
+    #experience ul li::before,
+    #education-skills ul li::before,
+    #personal-projects ul li::before {
+      font-family: "Font Awesome 6 Free";
+      content: "\f120";  /* Unicode for a Font Awesome desktop icon */
+      display: inline-block;
+      margin-right: 10px;
+      font-weight: 900;
+      color: #007bff;
+    }
+    .dark-mode #projects ul li::before,
+    .dark-mode #experience ul li::before,
+    .dark-mode #education-skills ul li::before 
+    .dark-mode #personal-projects ul li::before {
+      color: #66b2ff;
+    }
+    /* Fix button overlap on hover */
+    .cta, .download-resume {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      margin: 10px;  /* Changed from margin-top to margin */
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    /* Update dark mode button colors */
+    .dark-mode .cta, 
+    .dark-mode .download-resume {
+      background: #0056b3;
+      color: #fff;
+    }
+    .dark-mode .cta:hover, 
+    .dark-mode .download-resume:hover {
+      background: #003d80;
+      transform: scale(1.1);
+    }
+
+    /* Go to top button */
+    .go-to-top {
+      display: none;
+      position: fixed;
+      bottom: 40px;  /* Adjusted to be above footer */
+      right: 20px;
+      background: #007bff;
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 40px;
+      font-size: 20px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      z-index: 1000;
+    }
+
+    .go-to-top:hover {
+      background: #0056b3;
+      transform: scale(1.1);
+    }
+
+    .dark-mode .go-to-top {
+      background: #0056b3;
+    }
+
+    .dark-mode .go-to-top:hover {
+      background: #003d80;
+      
+}
+  </style>
 </head>
 <body>
-    <!-- Home Section -->
-    <header id="home">
-        <h1>Joseph E. Serrano Ramos</h1>
-        <p>System Administrator | Developer | Security Enthusiast</p>
-        <a href="#contact" class="cta">Get in Touch</a>
-    </header>
+  <!-- Dark Mode Toggle Button with Tooltip -->
+  <button class="dark-mode-toggle" title="Toggle Dark Mode"><i class="fa-solid fa-moon"></i></button>
+  
+  <!-- Home Section -->
+  <header id="home">
+    <img src="/images/IMG_9967 Edited.JPG" alt="Joseph E. Serrano Ramos" class="profile-img">
+    <h1>Hello! I'm Joseph E. Serrano</h1>
+    <p class="typing-effect"></p>
+    <a href="#contact" class="cta"><i class="fa-regular fa-address-card fa-flip"></i> Get in Touch</a>
+    <a href="/docs/2025-Resume-Detailed.pdf" class="download-resume" download><i class="fa-solid fa-download fa-bounce"></i> Download Resume</a>
+  </header>
+  
+  <!-- About Section -->
+  <section id="about">
+    <h2><i class="fa-solid fa-circle-info fa-shake"></i> About Me</h2>
+    <p>I am a self-taught technology enthusiast with a passion for learning and creating. My journey started in microbiology, but my curiosity led me to explore the world of technology. Over the years, I have built a strong foundation in system administration, programming, and cybersecurity.</p>
+    <p>Through continuous learning via online courses and hands-on projects, I have gained expertise in Active Directory, VMWare, Azure, AWS, Sophos, Microsoft 365, and various security and endpoint management solutions. I am proficient in Python for data analysis and JavaScript for web development. My experience extends to data manipulation using Pandas, NumPy, and SciPy, as well as working with large datasets in Excel.</p>
+    <p>Beyond technology, I love tinkering with new projects, building computers, gaming, and listening to cybersecurity podcasts. I also enjoy exploring different interests such as reading, working on my physical and mental health, and challenging myself with complex learning experiences—including making bread from scratch!</p>
+  </section>
+  
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2><i class="fa-solid fa-list-check fa-fade"></i> Project Experience</h2>
+    <div class="project-category">
+      <h3><i class="fa-brands fa-python"></i> Python &amp; Data Analysis</h3>
+      <ul>
+        <li>Presented demographic reports to clinic management to inform strategic planning and marketing efforts.</li>
+        <li>Conducted frequency analysis to identify common diagnoses and procedures among patient populations.</li>
+        <li>Presented findings to healthcare providers to support clinical decision-making and resource allocation.</li>
+      </ul>
+    </div>
+    <div class="project-category">
+      <h3><i class="fa-solid fa-server"></i> Systems Administration &amp; Security</h3>
+      <ul>
+        <li>Designed phishing campaigns to educate employees and improve cybersecurity awareness.</li>
+        <li>Contributed to building and implementing a data warehouse server from all our vendors to create a PowerBI solution for unified data visualization and analysis.</li>
+        <li>Researched and addressed vulnerabilities identified by Tenable, reducing security incidents.</li>
+        <li>Deployed MFA security for all high-value company assets on Azure and Sophos and provided instructional guides for users.</li>
+        <li>Integrated MS Entra Application proxy on local web-apps for convenient external access.</li>
+      </ul>
+    </div>
+    <div class="project-category">
+      <h3><i class="fa-brands fa-js"></i> JavaScript &amp; Web Development</h3>
+      <ul>
+        <li>Built, maintained, updated, and implemented additional pages or tools on a local webserver to improve internal infrastructure.</li>
+        <li>Updated and modernized an old website with new visuals and a more user-friendly interface; designed and debugged several JavaScript web apps; managed the domain hosting platform, PHP server, and updated files.</li>
+        <li>Contributed to deploying additional sub-pages on the employer's website and integrating AWS Chatbot for interactions and AWS Connect for call center integration.</li>
+      </ul>
+    </div>
+  </section>
+  
+  <!-- Experience Section -->
+  <section id="experience">
+    <h2><i class="fa-solid fa-briefcase fa-shake"></i> Work Experience</h2>
+    <div class="job">
+      <h3>HealthProMed, San Juan - System Administrator</h3>
+      <p class="date">August 2023 - Present</p>
+      <ul>
+        <li>Ensure system uptime &amp; performance, routine maintenance, backups, updates, troubleshooting, and resolving issues.</li>
+        <li>Manage hardware, software, security, and network infrastructure, optimize servers, and monitor network traffic.</li>
+        <li>Provide technical and user training support and manage user accounts and permissions.</li>
+        <li>Supervise, monitor and mentor help desk personnel and delegate tasks to the team.</li>
+        <li>Implement security policies, perform audits, respond to security incidents, ensure compliance, and deploy cybersecurity campaigns.</li>
+        <li>Manage virtual environments, cloud services, ensure scalability, reliability, security and design backup strategies, and test recovery plans.</li>
+        <li>Write scripts in Python and Powershell, automate tasks, use configuration management tools, and integrate AI.</li>
+        <li>Maintain technical documentation, generate performance reports and incident logs, and offer training in different technologies.</li>
+      </ul>
+    </div>
+    <div class="job">
+      <h3>HealthProMed, San Juan - EHR Administrator</h3>
+      <p class="date">June 2022 - August 2023</p>
+      <ul>
+        <li>Collaborated with healthcare professionals to understand data needs and requirements.</li>
+        <li>Conducted statistical analysis to identify trends, patterns, and outliers in healthcare data.</li>
+        <li>Assisted in the implementation of data-driven solutions to improve clinic operations and patient care outcomes.</li>
+        <li>Developed and enforced policies and procedures to maintain efficient EHR workflows, including personnel training and guide creations.</li>
+        <li>Resolved technical issues and provided prompt support to end-users while liaising with software vendors.</li>
+        <li>Collaborated with vendors and suppliers to coordinate system upgrades and maintenance.</li>
+        <li>Fostered effective communication and collaboration with cross-functional teams for issue resolution and system enhancements.</li>
+      </ul>
+    </div>
+    <div class="job">
+      <h3>Intelligent Solutions PR, San Juan - Helpdesk Technician</h3>
+      <p class="date">December 2020 - June 2022</p>
+      <ul>
+        <li>Monitor a ticketing system and coordinate with the team to resolve them.</li>
+        <li>Maintain and incorporate computers and related issues daily in a workspace of 250+ employees.</li>
+        <li>Troubleshoot day-to-day technologies such as printers, computers, scanners and diagnose repairability.</li>
+        <li>Help users understand the basic functionality of different technologies and incorporate better techniques for their understanding.</li>
+      </ul>
+    </div>
+  </section>
+  
+  <!-- Personal Projects Section -->
+  <section id="personal-projects">
+    <h2><i class="fa-solid fa-rocket fa-beat"></i> Personal Projects</h2>
+    <div class="project-category personal">
+      <h3><i class="fab fa-raspberry-pi"></i> Raspberry Pi Homelab</h3>
+      <ul>
+        <li>Configured a Raspberry Pi as a homelab using Docker to run multiple containers.</li>
+        <li>Installed and managed containers such as Pi-hole to block ads and reroute home network traffic.</li>
+        <li>Set up a JDownloader service for remote downloads to a connected drive.</li>
+        <li>Implemented OpenMediaVault to create a simple NAS and a compact Plex server for media streaming.</li>
+      </ul>
+    </div>
+    <div class="project-category personal">
+      <h3><i class="fa-solid fa-network-wired"></i> Home Network Configuration</h3>
+      <ul>
+        <li>Disabled the AP feature on the ISP-provided router and installed a personal router for enhanced control.</li>
+        <li>Configured multiple SSIDs, guest networks, and device priority for optimized connectivity.</li>
+        <li>Set up custom DHCP IP ranges and rerouted network traffic through a dedicated Pi-hole server.</li>
+      </ul>
+    </div>
+    <div class="project-category personal">
+      <h3><i class="fa-solid fa-code"></i> Portfolio Website Construction</h3>
+      <ul>
+        <li>Designed and developed this portfolio website with a focus on clean, responsive design.</li>
+        <li>Integrated creative ideas and interactive functionality while keeping the interface simple.</li>
+        <li>Incorporated modern design elements such as iconography, bold typography, and smooth scrolling.</li>
+      </ul>
+    </div>
+  </section>
+  
+  <!-- Education & Skills Section -->
+  <section id="education-skills">
+    <h2><i class="fa-solid fa-brain fa-fade"></i> Education & Skills</h2>
+    <h3><i class="fa-solid fa-graduation-cap fa-flip"></i> Education</h3>
+    <ul>
+      <li>Udemy, Online - The Complete JavaScript Course 2024: From Zero to Expert! (May 2024 - September 2024)</li>
+      <li>Udemy, Online - Linux Operating System Mastery (November 2022 - January 2023)</li>
+      <li>Udemy, Online - Front-End Development (HTML5/CSS3) (February 2022 - May 2022)</li>
+      <li>Udemy, Online - Python Programming Language Developer (August 2021 - December 2021)</li>
+      <li>Universidad de Puerto Rico, Arecibo - BSc Microbiology (August 2009 - December 2014)</li>
+    </ul>
+    <h3><i class="fa-solid fa-atom fa-spin"></i> Skills</h3>
+    <ul>
+      <li>Active Directory, VMWare, Azure, AWS, Sophos, Microsoft 365, SDP, EPC, MDM, macOS, Windows 10/11/Server, Linux</li>
+      <li>Python programming for data analysis, manipulation, and automation</li>
+      <li>JavaScript, HTML, and basic Node.js for web development</li>
+      <li>Pandas, NumPy, and SciPy for healthcare data analysis</li>
+      <li>Cleaning, preprocessing, and analyzing large datasets using Excel</li>
+      <li>Excellent problem-solving, analytical, and communication skills; fluent in English &amp; Spanish</li>
+    </ul>
+  </section>
+  
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2><i class="fa-solid fa-address-book"></i> Contact</h2>
+    <form id="contact-form">
+      <label for="from_name"><i class="fa-solid fa-pen-nib"></i> Name:</label>
+      <input type="text" id="from_name" name="from_name" required>
+      <label for="from_email"><i class="fa-regular fa-envelope"></i> Email:</label>
+      <input type="email" id="from_email" name="from_email" required>
+      <label for="message"><i class="fa-regular fa-message"></i> Message:</label>
+      <textarea id="message" name="message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <div class="social-links">
+      <p>Connect with me:</p>
+      <a href="https://github.com/niinjoe" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://www.linkedin.com/in/joeserrano-tech/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    </div>
+  </section>
+  <div class="go-to-top" title="Go to top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+  <!-- Footer -->
+  <footer>
+    <p><i class="fa-solid fa-copyright fa-flip"></i> <span id="year"></span> Joseph E. Serrano Ramos | All Rights Reserved</p>
+  </footer>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Initialize EmailJS with your Public Key
+      emailjs.init("0E1JqRQQNVFXobf7Y");
 
-    <!-- About Section -->
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Detailing my background, education, and skills.</p>
-    </section>
+      const darkModeToggle = document.querySelector(".dark-mode-toggle");
+      const body = document.body;
+      const typingEffect = document.querySelector(".typing-effect");
+      const texts = ["System Administrator", "Web Developer", "Cyber Security Enthusiast"];
+      const toggleIcon = darkModeToggle.querySelector("i");
+      const goToTop = document.querySelector('.go-to-top');
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="project-grid">
-            <!-- Project items will be added here -->
-        </div>
-    </section>
+      // Function to update dark mode toggle icon
+      function updateToggleIcon() {
+        if (body.classList.contains("dark-mode")) {
+          toggleIcon.classList.remove("fa-moon");
+          toggleIcon.classList.add("fa-sun");
+        } else {
+          toggleIcon.classList.remove("fa-sun");
+          toggleIcon.classList.add("fa-moon");
+        }
+      }
+      
+      // Show/hide go to top button
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+          goToTop.style.display = 'block';
+        } else {
+          goToTop.style.display = 'none';
+        }
+      });
 
-    <!-- Experience Section -->
-    <section id="experience">
-        <h2>Experience</h2>
-        <p>Job history and professional background.</p>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:joe.serrano.r@gmail.com">joe.serrano.r@gmail.com</a></p>
-        <p>GitHub: <a href="https://github.com/niinjoe">github.com/niinjoe</a></p>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Joseph E. Serrano Ramos | All Rights Reserved</p>
-    </footer>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const cta = document.querySelector(".cta");
-            cta.addEventListener("mouseover", () => {
-                cta.style.transform = "scale(1.1)";
-            });
-            cta.addEventListener("mouseout", () => {
-                cta.style.transform = "scale(1)";
-            });
+      // Smooth scroll to top
+      goToTop.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
         });
-    </script>
+      });
+      
+      // Dark mode toggle logic
+      darkModeToggle.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+        localStorage.setItem("darkMode", body.classList.contains("dark-mode"));
+        updateToggleIcon();
+      });
+      if (localStorage.getItem("darkMode") === "true") {
+        body.classList.add("dark-mode");
+      }
+      updateToggleIcon();
+      
+      // Function to type one letter at a time for typing effect
+      function typeText(text, charIndex, callback) {
+        if (charIndex < text.length) {
+          typingEffect.textContent += text.charAt(charIndex);
+          setTimeout(() => {
+            typeText(text, charIndex + 1, callback);
+          }, 100);
+        } else if (callback) {
+          setTimeout(callback, 1500);
+        }
+      }
+      
+      // Cycle through texts for typing effect
+      function startTypingAnimation(textIndex) {
+        if (textIndex >= texts.length) textIndex = 0;
+        typingEffect.textContent = "";
+        typeText(texts[textIndex], 0, () => {
+          startTypingAnimation(textIndex + 1);
+        });
+      }
+      startTypingAnimation(0);
+      
+      // Automatically set the current year in the footer
+      document.getElementById("year").textContent = new Date().getFullYear();
+      
+      // Handle Contact Form Submission using EmailJS
+      const contactForm = document.getElementById("contact-form");
+      contactForm.addEventListener("submit", function(e) {
+        e.preventDefault(); // Prevent default form submission
+
+        // Send the form using EmailJS with your service and template IDs
+        emailjs.sendForm('service_j2k5bjn', 'template_3g9e2y4', this)
+          .then(function(response) {
+            alert("Thank you for contacting me! I'll get back to you soon.");
+            contactForm.reset();
+          }, function(error) {
+            alert("Oops, something went wrong. Please try again later.");
+            console.error('FAILED...', error);
+          });
+      });
+    });
+  </script>
 </body>
 </html>
