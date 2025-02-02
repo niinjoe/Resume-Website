@@ -4,28 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Certifications - Joseph E. Serrano Ramos</title>
-  <!-- Import Google Font for headings -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet" />
-  <!-- Load Font Awesome for icons (integrity removed for simplicity) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://kit.fontawesome.com/e5bd54ea5b.js" crossorigin="anonymous"></script>
   <style>
-    /* Define theme colors and gradient */
-    :root {
-      --blue: #007bff;
-      --indigo: #6610f2;
-      --purple: #6f42c1;
-      --gradient: linear-gradient(45deg, var(--blue), var(--indigo), var(--purple));
-    }
-    
-    /* Animated gradient keyframes */
-    @keyframes gradient-animation {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    
-    /* Enable smooth scrolling */
+    /* Enable Smooth Scrolling */
     html {
       scroll-behavior: smooth;
     }
@@ -35,37 +18,74 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(45deg, var(--blue), var(--indigo), var(--purple));
-      background-size: 200% 200%;
-      animation: gradient-animation 6s ease infinite;
-      color: #fff;
+      background-color: #f4f4f4;
+      color: #333;
       text-align: center;
-      transition: background 0.3s, color 0.3s;
+      transition: background-color 0.3s, color 0.3s;
     }
-    
+
+    .dark-mode {
+      background-color: #121212;
+      color: #ffffff;
+    }
+
+    /* Headings */
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
+
+    /* Header */
     header {
-      background: rgba(0, 0, 0, 0.8);
+      background: #333;
+      color: #fff;
       padding: 20px;
       text-align: center;
+      position: relative;
     }
-    
+
+    .dark-mode header {
+      background: #1a1a1a;
+    }
+
+    /* Dark Mode Toggle Button */
+    .dark-mode-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      padding: 10px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .dark-mode .dark-mode-toggle {
+      background: #0056b3;
+    }
+
     /* Back Button */
     .back-btn {
       display: inline-block;
       padding: 10px 20px;
-      margin: 20px;
-      background: var(--gradient);
-      background-size: 200% 200%;
-      animation: gradient-animation 6s ease infinite;
-      border-radius: 5px;
+      background: #007bff;
       color: #fff;
-      font-weight: bold;
-      transition: transform 0.2s;
+      text-decoration: none;
+      border-radius: 5px;
+      margin: 10px;
+      transition: transform 0.2s, background 0.3s;
     }
+
     .back-btn:hover {
+      background: #0056b3;
       transform: scale(1.1);
     }
-    
+
     /* Certifications Container */
     .certifications-container {
       display: flex;
@@ -73,36 +93,46 @@
       gap: 40px;
       padding: 20px;
       max-width: 900px;
-      margin: 20px auto;
-      background: rgba(0, 0, 0, 0.6);
+      margin: 20px auto 60px;
+      background: #fff;
       border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-    
-    /* Shiny Card Style for each Certification tile */
+
+    .dark-mode .certifications-container {
+      background: #333;
+      box-shadow: none;
+    }
+
+    /* Certification Card Style */
     .certification {
-      background: rgba(0, 0, 0, 0.5);
-      border: 5px solid;
-      /* Use border-image with the animated gradient */
-      border-image: var(--gradient) 1;
+      background: #fff;
+      border: 1px solid #007bff;
       border-radius: 8px;
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      /* Optional: Animate the border by reusing the gradient animation */
-      animation: gradient-animation 6s ease infinite;
     }
+
     .certification:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      transform: scale(1.02);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     }
-    
+
+    .dark-mode .certification {
+      background: #444;
+      border-color: #0056b3;
+    }
+
     .certification iframe {
       width: 100%;
-      height: 600px;
+      height: 700px;
       border: none;
+      display: block;
     }
-    
+
+    /* Footer */
     footer {
-      background: rgba(0, 0, 0, 0.8);
+      background: #333;
       color: #fff;
       padding: 10px;
       text-align: center;
@@ -110,26 +140,51 @@
       bottom: 0;
       width: 100%;
     }
+
+    .dark-mode footer {
+      background: #1a1a1a;
+    }
   </style>
 </head>
 <body>
+  <button class="dark-mode-toggle" onclick="document.body.classList.toggle('dark-mode')">
+    <i class="fas fa-moon"></i>
+  </button>
+
   <header>
     <h1>Certifications</h1>
     <a href="index.html" class="back-btn"><i class="fa-solid fa-house"></i> Back to Home</a>
   </header>
   
   <div class="certifications-container">
-    <!-- Update the src attribute for each iframe to point to your actual PDF files -->
     <div class="certification">
-      <iframe src="/certifications/certification1.pdf"></iframe>
+      <iframe src="./docs/HTML&CSS_Certificate.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"></iframe>
     </div>
     <div class="certification">
-      <iframe src="/certifications/certification2.pdf"></iframe>
+      <iframe src="./docs/MS_learn_achievements/Manage application access in Microsoft Entra ID.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"></iframe>
     </div>
     <div class="certification">
-      <iframe src="/certifications/certification3.pdf"></iframe>
+      <iframe src="./docs/MS_learn_achievements/Manage authentication by using Microsoft Entra.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"></iframe>
     </div>
-  </div>
+    <div class="certification">
+      <iframe src="./docs/MS_learn_achievements/Manage authorization by using Microsoft Entra ID.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"></iframe>
+    </div>
+    <div class="certification">
+      <iframe src="./docs/MS_learn_achievements/Manage identities in Microsoft Entra ID.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"></iframe>
+    </div>
+    <div class="certification">
+      <iframe src="./docs/MS_learn_achievements/Plan and implement advanced security.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"></iframe>
+    </div>
+    <div class="certification">
+      <iframe src="./docs/NSE_1_Certification-2.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"></iframe>
+    </div>
+    <div class="certification">
+      <iframe src="./docs/NSE_2_Certification-1.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"></iframe>
+    </div>
+    <div class="certification">
+      <iframe src="./docs/NSE_3_Certificate-1.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"></iframe>
+    </div>
+</div>
   
   <footer>
     <p>&copy; <span id="year"></span> Joseph E. Serrano Ramos | All Rights Reserved</p>
